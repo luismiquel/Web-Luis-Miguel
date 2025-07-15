@@ -1,42 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Mi Web Gratuita</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Sobre Mí</title>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
-  <h1 class="text-4xl font-bold mb-4">Mi Web Gratuita</h1>
-  <button id="theme-toggle" class="mb-6 text-2xl">🌙</button>
-  <p class="text-lg mb-8 text-center">
-    Bienvenido a tu nueva página<br/>
-    Esta plantilla es 100% gratuita, responsive y fácil de personalizar.
-  </p>
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-    <div>
-      <h2 class="text-2xl font-semibold mb-2">Responsive</h2>
-      <p>Se adapta a cualquier tamaño de pantalla.</p>
-    </div>
-    <div>
-      <h2 class="text-2xl font-semibold mb-2">Rápida</h2>
-      <p>Carga ultra rápida usando solo CDN.</p>
-    </div>
-    <div>
-      <h2 class="text-2xl font-semibold mb-2">Fácil</h2>
-      <p>Personaliza con solo editar HTML.</p>
-    </div>
-  </div>
-  <footer class="mt-12 text-sm">
-    © 2025 Luís Miguel García De Las Morenas
-  </footer>
-  <script>
-    // Modo claro/oscuro
-    const btn = document.getElementById('theme-toggle');
-    btn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      btn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
-    });
-  </script>
+<body>
+  <header>
+    <a href="index.html">Inicio</a> |
+    <a href="about.html">Sobre Mí</a>
+  </header>
+  <h1>Sobre Mí</h1>
+  <p>¡Hola! Soy Luis Miguel y esto es una demo.</p>
 </body>
 </html>
