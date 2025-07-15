@@ -1,38 +1,42 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es" class="">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mi Sitio — Luis Miguel</title>
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { darkMode: 'class' }
+    // Activamos modo oscuro solo si ya lo tenía en localStorage
+    tailwind.config = {
+      darkMode: 'class'
+    };
   </script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-gray-50 text-gray-800 transition-colors duration-300">
+  <main class="min-h-screen flex flex-col items-center justify-center px-4 relative">
+    <!-- Toggle Light / Dark -->
+    <button id="theme-toggle"
+      class="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800">
+      <span id="icon-light" class="hidden">🌞</span>
+      <span id="icon-dark">🌙</span>
+    </button>
 
-  <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800">
-    <span id="icon-light" class="hidden">🌞</span>
-    <span id="icon-dark">🌙</span>
-  </button>
-
-  <main class="min-h-screen flex flex-col items-center justify-center px-4">
+    <!-- Cabecera -->
     <h1 class="text-4xl font-extrabold mb-4 text-center">
       Luis Miguel<br/>
       <span class="block text-6xl">🌐</span>
     </h1>
-
     <p class="text-xl mb-8 text-center max-w-xl">
       Bienvenido a <span class="font-semibold">Mi Sitio</span><br/>
       Una página limpia, rápida y responsiva creada con IA y TailwindCSS.
     </p>
-
     <a href="#features"
        class="mb-12 inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-full transition">
       Conocer más
     </a>
 
+    <!-- Sección de características -->
     <section id="features" class="grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
       <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
         <h2 class="text-2xl font-bold mb-2">Responsive</h2>
@@ -50,356 +54,41 @@
   </main>
 
   <script>
-    const btn = document.getElementById('theme-toggle')
-    const html = document.documentElement
-    const iconLight = document.getElementById('icon-light')
-    const iconDark  = document.getElementById('icon-dark')
+    const btn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const iconLight = document.getElementById('icon-light');
+    const iconDark = document.getElementById('icon-dark');
 
-    // Inicializa iconos según preferencia
-    if (localStorage.theme === 'dark' ||
-       (!localStorage.theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
-      html.classList.add('dark')
-      iconLight.classList.remove('hidden')
+    // Iniciar estado: claro por defecto, salvo que localStorage diga 'dark'
+    if (localStorage.theme === 'dark') {
+      html.classList.add('dark');
+      document.body.classList.replace('bg-gray-50','bg-gray-900');
+      document.body.classList.replace('text-gray-800','text-gray-100');
+      iconLight.classList.remove('hidden');
+      iconDark.classList.add('hidden');
     } else {
-      iconDark.classList.remove('hidden')
+      html.classList.remove('dark');
+      iconDark.classList.remove('hidden');
+      iconLight.classList.add('hidden');
     }
 
     btn.addEventListener('click', () => {
-      html.classList.toggle('dark')
+      html.classList.toggle('dark');
+
       if (html.classList.contains('dark')) {
-        localStorage.theme = 'dark'
-        iconLight.classList.remove('hidden')
-        iconDark.classList.add('hidden')
+        localStorage.theme = 'dark';
+        iconLight.classList.remove('hidden');
+        iconDark.classList.add('hidden');
+        document.body.classList.replace('bg-gray-50','bg-gray-900');
+        document.body.classList.replace('text-gray-800','text-gray-100');
       } else {
-        localStorage.theme = 'light'
-        iconDark.classList.remove('hidden')
-        iconLight.classList.add('hidden')
+        localStorage.theme = 'light';
+        iconDark.classList.remove('hidden');
+        iconLight.classList.add('hidden');
+        document.body.classList.replace('bg-gray-900','bg-gray-50');
+        document.body.classList.replace('text-gray-100','text-gray-800');
       }
-    })
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es" class="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Mi Sitio — Luis Miguel</title>
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class' }
-  </script>
-</head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-
-  <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800">
-    <span id="icon-light" class="hidden">🌞</span>
-    <span id="icon-dark">🌙</span>
-  </button>
-
-  <main class="min-h-screen flex flex-col items-center justify-center px-4">
-    <h1 class="text-4xl font-extrabold mb-4 text-center">
-      Luis Miguel<br/>
-      <span class="block text-6xl">🌐</span>
-    </h1>
-
-    <p class="text-xl mb-8 text-center max-w-xl">
-      Bienvenido a <span class="font-semibold">Mi Sitio</span><br/>
-      Una página limpia, rápida y responsiva creada con IA y TailwindCSS.
-    </p>
-
-    <a href="#features"
-       class="mb-12 inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-full transition">
-      Conocer más
-    </a>
-
-    <section id="features" class="grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Responsive</h2>
-        <p>Se adapta a cualquier tamaño: móvil, tablet y escritorio.</p>
-      </div>
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Rápida</h2>
-        <p>Carga ultra-rápida usando CDN y código optimizado.</p>
-      </div>
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Fácil</h2>
-        <p>Cambia colores, texto e imágenes con solo editar este HTML.</p>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    const btn = document.getElementById('theme-toggle')
-    const html = document.documentElement
-    const iconLight = document.getElementById('icon-light')
-    const iconDark  = document.getElementById('icon-dark')
-
-    // Inicializa iconos según preferencia
-    if (localStorage.theme === 'dark' ||
-       (!localStorage.theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
-      html.classList.add('dark')
-      iconLight.classList.remove('hidden')
-    } else {
-      iconDark.classList.remove('hidden')
-    }
-
-    btn.addEventListener('click', () => {
-      html.classList.toggle('dark')
-      if (html.classList.contains('dark')) {
-        localStorage.theme = 'dark'
-        iconLight.classList.remove('hidden')
-        iconDark.classList.add('hidden')
-      } else {
-        localStorage.theme = 'light'
-        iconDark.classList.remove('hidden')
-        iconLight.classList.add('hidden')
-      }
-    })
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es" class="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Mi Sitio — Luis Miguel</title>
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class' }
-  </script>
-</head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-
-  <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800">
-    <span id="icon-light" class="hidden">🌞</span>
-    <span id="icon-dark">🌙</span>
-  </button>
-
-  <main class="min-h-screen flex flex-col items-center justify-center px-4">
-    <h1 class="text-4xl font-extrabold mb-4 text-center">
-      Luis Miguel<br/>
-      <span class="block text-6xl">🌐</span>
-    </h1>
-
-    <p class="text-xl mb-8 text-center max-w-xl">
-      Bienvenido a <span class="font-semibold">Mi Sitio</span><br/>
-      Una página limpia, rápida y responsiva creada con IA y TailwindCSS.
-    </p>
-
-    <a href="#features"
-       class="mb-12 inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-full transition">
-      Conocer más
-    </a>
-
-    <section id="features" class="grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Responsive</h2>
-        <p>Se adapta a cualquier tamaño: móvil, tablet y escritorio.</p>
-      </div>
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Rápida</h2>
-        <p>Carga ultra-rápida usando CDN y código optimizado.</p>
-      </div>
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Fácil</h2>
-        <p>Cambia colores, texto e imágenes con solo editar este HTML.</p>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    const btn = document.getElementById('theme-toggle')
-    const html = document.documentElement
-    const iconLight = document.getElementById('icon-light')
-    const iconDark  = document.getElementById('icon-dark')
-
-    // Inicializa iconos según preferencia
-    if (localStorage.theme === 'dark' ||
-       (!localStorage.theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
-      html.classList.add('dark')
-      iconLight.classList.remove('hidden')
-    } else {
-      iconDark.classList.remove('hidden')
-    }
-
-    btn.addEventListener('click', () => {
-      html.classList.toggle('dark')
-      if (html.classList.contains('dark')) {
-        localStorage.theme = 'dark'
-        iconLight.classList.remove('hidden')
-        iconDark.classList.add('hidden')
-      } else {
-        localStorage.theme = 'light'
-        iconDark.classList.remove('hidden')
-        iconLight.classList.add('hidden')
-      }
-    })
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es" class="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Mi Sitio — Luis Miguel</title>
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class' }
-  </script>
-</head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-
-  <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800">
-    <span id="icon-light" class="hidden">🌞</span>
-    <span id="icon-dark">🌙</span>
-  </button>
-
-  <main class="min-h-screen flex flex-col items-center justify-center px-4">
-    <h1 class="text-4xl font-extrabold mb-4 text-center">
-      Luis Miguel<br/>
-      <span class="block text-6xl">🌐</span>
-    </h1>
-
-    <p class="text-xl mb-8 text-center max-w-xl">
-      Bienvenido a <span class="font-semibold">Mi Sitio</span><br/>
-      Una página limpia, rápida y responsiva creada con IA y TailwindCSS.
-    </p>
-
-    <a href="#features"
-       class="mb-12 inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-full transition">
-      Conocer más
-    </a>
-
-    <section id="features" class="grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Responsive</h2>
-        <p>Se adapta a cualquier tamaño: móvil, tablet y escritorio.</p>
-      </div>
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Rápida</h2>
-        <p>Carga ultra-rápida usando CDN y código optimizado.</p>
-      </div>
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Fácil</h2>
-        <p>Cambia colores, texto e imágenes con solo editar este HTML.</p>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    const btn = document.getElementById('theme-toggle')
-    const html = document.documentElement
-    const iconLight = document.getElementById('icon-light')
-    const iconDark  = document.getElementById('icon-dark')
-
-    // Inicializa iconos según preferencia
-    if (localStorage.theme === 'dark' ||
-       (!localStorage.theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
-      html.classList.add('dark')
-      iconLight.classList.remove('hidden')
-    } else {
-      iconDark.classList.remove('hidden')
-    }
-
-    btn.addEventListener('click', () => {
-      html.classList.toggle('dark')
-      if (html.classList.contains('dark')) {
-        localStorage.theme = 'dark'
-        iconLight.classList.remove('hidden')
-        iconDark.classList.add('hidden')
-      } else {
-        localStorage.theme = 'light'
-        iconDark.classList.remove('hidden')
-        iconLight.classList.add('hidden')
-      }
-    })
-  </script>
-</body>
-</html> 
-<!DOCTYPE html>
-<html lang="es" class="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Mi Sitio — Luis Miguel</title>
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class' }
-  </script>
-</head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-
-  <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800">
-    <span id="icon-light" class="hidden">🌞</span>
-    <span id="icon-dark">🌙</span>
-  </button>
-
-  <main class="min-h-screen flex flex-col items-center justify-center px-4">
-    <h1 class="text-4xl font-extrabold mb-4 text-center">
-      Luis Miguel<br/>
-      <span class="block text-6xl">🌐</span>
-    </h1>
-
-    <p class="text-xl mb-8 text-center max-w-xl">
-      Bienvenido a <span class="font-semibold">Mi Sitio</span><br/>
-      Una página limpia, rápida y responsiva creada con IA y TailwindCSS.
-    </p>
-
-    <a href="#features"
-       class="mb-12 inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-full transition">
-      Conocer más
-    </a>
-
-    <section id="features" class="grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Responsive</h2>
-        <p>Se adapta a cualquier tamaño: móvil, tablet y escritorio.</p>
-      </div>
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Rápida</h2>
-        <p>Carga ultra-rápida usando CDN y código optimizado.</p>
-      </div>
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-        <h2 class="text-2xl font-bold mb-2">Fácil</h2>
-        <p>Cambia colores, texto e imágenes con solo editar este HTML.</p>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    const btn = document.getElementById('theme-toggle')
-    const html = document.documentElement
-    const iconLight = document.getElementById('icon-light')
-    const iconDark  = document.getElementById('icon-dark')
-
-    // Inicializa iconos según preferencia
-    if (localStorage.theme === 'dark' ||
-       (!localStorage.theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
-      html.classList.add('dark')
-      iconLight.classList.remove('hidden')
-    } else {
-      iconDark.classList.remove('hidden')
-    }
-
-    btn.addEventListener('click', () => {
-      html.classList.toggle('dark')
-      if (html.classList.contains('dark')) {
-        localStorage.theme = 'dark'
-        iconLight.classList.remove('hidden')
-        iconDark.classList.add('hidden')
-      } else {
-        localStorage.theme = 'light'
-        iconDark.classList.remove('hidden')
-        iconLight.classList.add('hidden')
-      }
-    })
+    });
   </script>
 </body>
 </html>
