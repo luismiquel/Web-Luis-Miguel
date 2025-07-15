@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Mi Sitio — Luis Miguel</title>
-  <!-- Tailwind CSS vía CDN -->
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { darkMode: 'class' }
@@ -14,8 +14,8 @@
 
   <main class="min-h-screen flex flex-col items-center justify-center px-4">
     <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800">
-      <span id="icon-light" class="hidden">🌞</span>
-      <span id="icon-dark">🌙</span>
+      <span id="icon-light" class="hidden">🌙</span>
+      <span id="icon-dark">🌞</span>
     </button>
 
     <h1 class="text-4xl font-extrabold mb-4 text-center">
@@ -55,11 +55,9 @@
     const iconLight = document.getElementById('icon-light');
     const iconDark = document.getElementById('icon-dark');
 
-    // Arranca con el tema guardado o según preferencia del sistema
-    if (
-      localStorage.theme === 'dark' ||
-      (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
+    // Al cargar, reflejar preferencia actual
+    if (localStorage.theme === 'dark' ||
+        (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       html.classList.add('dark');
       iconLight.classList.remove('hidden');
       iconDark.classList.add('hidden');
@@ -69,6 +67,7 @@
       iconLight.classList.add('hidden');
     }
 
+    // Toggle tema y guardar en localStorage
     btn.addEventListener('click', () => {
       html.classList.toggle('dark');
       if (html.classList.contains('dark')) {
