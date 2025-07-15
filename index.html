@@ -14,13 +14,13 @@
 
   <main class="min-h-screen flex flex-col items-center justify-center px-4">
     <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800">
-      <span id="icon-light" class="hidden">🌙</span>
-      <span id="icon-dark">🌞</span>
+      <span id="icon-light" class="hidden">🌞</span>
+      <span id="icon-dark">🌙</span>
     </button>
 
     <h1 class="text-4xl font-extrabold mb-4 text-center">
       Luis Miguel<br/>
-      <span class="block text-6xl">🌙</span>
+      <span class="block text-6xl">🌐</span>
     </h1>
 
     <p class="text-xl mb-8 text-center max-w-xl">
@@ -55,9 +55,11 @@
     const iconLight = document.getElementById('icon-light');
     const iconDark = document.getElementById('icon-dark');
 
-    // Al cargar, reflejar preferencia actual
-    if (localStorage.theme === 'dark' ||
-        (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    // Al cargar, refleja la preferencia de tema
+    if (
+      localStorage.theme === 'dark' ||
+      (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
       html.classList.add('dark');
       iconLight.classList.remove('hidden');
       iconDark.classList.add('hidden');
@@ -67,7 +69,7 @@
       iconLight.classList.add('hidden');
     }
 
-    // Toggle tema y guardar en localStorage
+    // Toggle tema y guarda en localStorage
     btn.addEventListener('click', () => {
       html.classList.toggle('dark');
       if (html.classList.contains('dark')) {
