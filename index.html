@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Mi Sitio — Luis Miguel</title>
-  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class' }
-  </script>
+  <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
@@ -18,21 +15,19 @@
       <span id="icon-dark">🌙</span>
     </button>
 
+    <!-- Aquí va tu contenido -->
     <h1 class="text-4xl font-extrabold mb-4 text-center">
       Luis Miguel<br/>
       <span class="block text-6xl">🌐</span>
     </h1>
-
     <p class="text-xl mb-8 text-center max-w-xl">
-      Bienvenido a <span class="font-semibold">Mi Sitio</span><br/>
+      Bienvenido a Mi Sitio<br/>
       Una página limpia, rápida y responsiva creada con IA y TailwindCSS.
     </p>
-
     <a href="#features"
        class="mb-12 inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-full transition">
       Conocer más
     </a>
-
     <section id="features" class="grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
       <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
         <h2 class="text-2xl font-bold mb-2">Responsive</h2>
@@ -47,6 +42,8 @@
         <p>Cambia colores, texto e imágenes con solo editar este HTML.</p>
       </div>
     </section>
+    <!-- Fin de tu contenido -->
+
   </main>
 
   <script>
@@ -55,7 +52,7 @@
     const iconLight = document.getElementById('icon-light');
     const iconDark = document.getElementById('icon-dark');
 
-    // Al cargar, refleja la preferencia de tema
+    // Al cargar
     if (
       localStorage.theme === 'dark' ||
       (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
@@ -69,7 +66,7 @@
       iconLight.classList.add('hidden');
     }
 
-    // Toggle tema y guarda en localStorage
+    // Al hacer click
     btn.addEventListener('click', () => {
       html.classList.toggle('dark');
       if (html.classList.contains('dark')) {
