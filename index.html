@@ -1,16 +1,77 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Sobre Mí</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Web Gratuita | Luis Miguel</title>
+  <!-- Tailwind CSS desde CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Configuración dark mode
+    tailwind.config = { darkMode: 'class' }
+  </script>
 </head>
-<body>
-  <header>
-    <a href="index.html">Inicio</a> |
-    <a href="about.html">Sobre Mí</a>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans">
+
+  <!-- Navbar -->
+  <header class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur z-10">
+    <nav class="max-w-4xl mx-auto flex items-center justify-between p-4">
+      <h1 class="text-xl font-bold">Luis Miguel</h1>
+      <ul class="flex space-x-4">
+        <li><a href="index.html" class="hover:text-amber-600">Inicio</a></li>
+        <li><a href="about.html" class="hover:text-amber-600">Sobre Mí</a></li>
+      </ul>
+      <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+        🌙
+      </button>
+    </nav>
   </header>
-  <h1>Sobre Mí</h1>
-  <p>¡Hola! Soy Luis Miguel y esto es una demo.</p>
+
+  <!-- Hero -->
+  <main class="pt-24">
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-4">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Bienvenido a Mi Web Gratuita</h2>
+      <p class="text-lg md:text-xl mb-6 max-w-xl">
+        Esta plantilla es <strong>100% gratuita</strong>, <strong>responsive</strong> y fácil de personalizar.
+      </p>
+      <div class="space-x-4">
+        <a href="#features" class="px-6 py-3 bg-amber-600 text-white rounded-full hover:bg-amber-700 transition">Conocer más</a>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="bg-gray-50 dark:bg-gray-800 py-16">
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+        <div class="p-6 bg-white dark:bg-gray-700 rounded-2xl shadow">
+          <h3 class="text-2xl font-semibold mb-2">Responsive</h3>
+          <p>Se adapta a cualquier pantalla, desde móviles hasta escritorio.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-700 rounded-2xl shadow">
+          <h3 class="text-2xl font-semibold mb-2">Rápida</h3>
+          <p>Carga ultra-rápida usando sólo CDN y código limpio.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-700 rounded-2xl shadow">
+          <h3 class="text-2xl font-semibold mb-2">Fácil</h3>
+          <p>Personaliza colores y contenido editando sólo el HTML.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-sm">
+    &copy; <span id="year"></span> Luis Miguel. Creado con 🧠 IA.
+  </footer>
+
+  <script>
+    // Toggle dark/light mode
+    const btn = document.getElementById('theme-toggle');
+    btn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      btn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+    });
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
