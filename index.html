@@ -1,98 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mi Web Gratuita</title>
-  <meta name="description" content="Página web gratuita, responsive y fácil de personalizar">
-  <meta name="theme-color" content="#FF6F61" />
-  <link rel="manifest" href="manifest.json">
-  <!-- Tailwind CSS CDN con paleta IA -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: '#FF6F61',      // Coral cálido
-            secondary: '#6B5B95',    // Morado suave
-            accent: '#88B04B',       // Verde fresco
-            neutral: '#F7CAC9',      // Rosa pálido
-            darkbg: '#34558B'        // Azul profundo
-          }
-        }
-      }
-    }
-  </script>
   <style>
-    /* Tipografía personalizada */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-    body { font-family: 'Inter', sans-serif; }
+    /* Para el modo oscuro */
+    html { color-scheme: light dark; }
   </style>
 </head>
-<body class="bg-neutral text-gray-800 dark:bg-darkbg dark:text-neutral transition-colors">
-  <!-- Header -->
-  <header class="bg-primary dark:bg-secondary text-white">
-    <div class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Mi Web Gratuita</h1>
-      <button id="themeToggle" class="p-2 rounded-full bg-secondary hover:bg-primary transition">🌙</button>
-    </div>
-  </header>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <!-- Navbar -->
+  <nav class="p-4 flex justify-between items-center">
+    <div class="text-2xl font-bold">Luis Miguel</div>
+    <button id="theme-toggle" class="p-2">🌙</button>
+  </nav>
 
   <!-- Hero -->
-  <section class="bg-primary/20 dark:bg-secondary/20 py-20">
-    <div class="max-w-3xl mx-auto text-center px-4">
-      <h2 class="text-4xl font-extrabold mb-4 text-primary dark:text-accent">Bienvenido a tu nueva página</h2>
-      <p class="text-lg mb-8">Esta plantilla es 100% gratuita, responsive y fácil de personalizar.</p>
-      <a href="#features" class="bg-secondary dark:bg-accent text-white px-6 py-3 rounded-full font-semibold hover:bg-secondary/80 transition">Conocer más</a>
+  <section class="h-screen bg-[url('https://placehold.co/1200x800')] bg-cover bg-center flex items-center justify-center">
+    <div class="bg-black/50 p-8 rounded-xl text-center">
+      <h1 class="text-5xl font-bold mb-4">Bienvenido a mi web</h1>
+      <p class="mb-6">Plantilla 100% gratuita, responsive y fácil de personalizar.</p>
+      <a href="#servicios" class="px-6 py-3 bg-amber-600 text-white rounded-full">Conocer más</a>
     </div>
   </section>
 
-  <!-- Features -->
-  <section id="features" class="py-16">
-    <div class="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-      <div class="p-6 border-2 border-primary rounded-lg hover:bg-primary/10 transition">
-        <h3 class="text-2xl font-bold mb-2 text-primary">Responsive</h3>
-        <p>Se adapta a cualquier tamaño de pantalla, desde móviles hasta pantallas grandes.</p>
-      </div>
-      <div class="p-6 border-2 border-accent rounded-lg hover:bg-accent/10 transition">
-        <h3 class="text-2xl font-bold mb-2 text-accent">Rápida</h3>
-        <p>Carga ultra rápida usando solo CDN y código limpio.</p>
-      </div>
-      <div class="p-6 border-2 border-secondary rounded-lg hover:bg-secondary/10 transition">
-        <h3 class="text-2xl font-bold mb-2 text-secondary">Fácil</h3>
-        <p>Personaliza colores, tipografías y contenido con solo editar HTML.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Secciones -->
+  <main class="space-y-20 py-20 px-4">
+    <!-- Sobre mí -->
+    <section id="sobre-mi" class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-semibold mb-4">Sobre mí</h2>
+      <p>Soy Luis Miguel, desarrollador web y amante del código limpio.</p>
+    </section>
 
-  <!-- Contact -->
-  <section class="bg-neutral/50 dark:bg-darkbg/80 py-16">
-    <div class="max-w-2xl mx-auto px-4">
-      <h3 class="text-3xl font-bold text-center mb-6 text-primary">Contáctame</h3>
-      <form class="space-y-4">
-        <input type="text" placeholder="Tu nombre" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-700">
-        <input type="email" placeholder="Tu correo" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-700">
-        <textarea rows="4" placeholder="Tu mensaje" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-700"></textarea>
-        <button type="submit" class="w-full bg-secondary dark:bg-accent text-white py-3 rounded font-semibold hover:bg-secondary/80 transition">Enviar</button>
-      </form>
-    </div>
-  </section>
+    <!-- Servicios -->
+    <section id="servicios" class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div class="p-6 border rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="font-semibold mb-2">Responsive</h3>
+        <p>Se adapta a cualquier pantalla.</p>
+      </div>
+      <div class="p-6 border rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="font-semibold mb-2">Rápida</h3>
+        <p>Carga ultra rápida con CDN.</p>
+      </div>
+      <div class="p-6 border rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="font-semibold mb-2">Fácil</h3>
+        <p>Personaliza con solo editar HTML.</p>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="text-center py-6 bg-neutral/30 dark:bg-darkbg/90">
-    <p class="text-sm text-gray-600 dark:text-gray-300">&copy; <span id="year"></span> Luis Miguel García De Las Morenas. Todos los derechos reservados.</p>
+    <!-- Portfolio (ejemplo) -->
+    <section id="portfolio" class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold text-center mb-6">Portfolio</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Tarjeta de ejemplo -->
+        <div class="border rounded-lg overflow-hidden shadow">
+          <img src="https://placehold.co/400x300" alt="Proyecto 1" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-semibold">Proyecto 1</h4>
+            <p class="text-sm">Descripción breve del proyecto.</p>
+          </div>
+        </div>
+        <!-- Añade más -->
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-semibold mb-4">Contacto</h2>
+      <p>¿Quieres trabajar conmigo? Escríbeme a <a href="mailto:tu@correo.com" class="text-amber-600">tu@correo.com</a></p>
+    </section>
+  </main>
+
+  <footer class="py-6 text-center border-t">
+    © <span id="year"></span> Luis Miguel. Todos los derechos.
   </footer>
 
-  <!-- Script -->
   <script>
-    // Toggle dark/light
-    const btn = document.getElementById('themeToggle');
-    btn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      btn.textContent = btn.textContent === '🌙' ? '☀️' : '🌙';
-    });
+    // Toggle modo claro/oscuro
+    const btn = document.getElementById('theme-toggle');
+    btn.onclick = () => document.documentElement.classList.toggle('dark');
     // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
