@@ -1,16 +1,144 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Sobre Mí</title>
+  <title>Sobre Mí — Luis Miguel</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
 </head>
-<body>
-  <header>
-    <a href="index.html">Inicio</a> |
-    <a href="about.html">Sobre Mí</a>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Toggle tema -->
+  <button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800 z-20">
+    <span id="icon-light" class="hidden">🌞</span>
+    <span id="icon-dark">🌙</span>
+  </button>
+
+  <!-- Cabecera / Nav -->
+  <header class="w-full bg-white dark:bg-gray-800 shadow-md">
+    <nav class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold text-amber-600 dark:text-amber-400">Luis Miguel</a>
+      <ul class="flex gap-4">
+        <li><a href="index.html" class="hover:underline">Inicio</a></li>
+        <li><a href="about.html" class="font-semibold underline">Sobre Mí</a></li>
+      </ul>
+    </nav>
   </header>
-  <h1>Sobre Mí</h1>
-  <p>¡Hola! Soy Luis Miguel y esto es una demo.</p>
+
+  <!-- Hero -->
+  <section class="pt-16 pb-12 bg-gradient-to-b from-amber-100 to-transparent dark:from-gray-800 dark:to-transparent">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-5xl font-extrabold mb-4">¡Hola! Soy Luis Miguel</h1>
+      <p class="text-lg">Desarrollador web apasionado, creando experiencias limpias, rápidas y accesibles.</p>
+    </div>
+  </section>
+
+  <!-- Contenido principal -->
+  <main class="max-w-4xl mx-auto px-4 py-12 space-y-16">
+
+    <!-- Biografía -->
+    <section id="bio" class="flex flex-col md:flex-row items-center gap-8">
+      <img src="https://via.placeholder.com/200" alt="Foto de Luis Miguel"
+           class="w-48 h-48 rounded-full object-cover shadow-lg" />
+      <div>
+        <h2 class="text-3xl font-bold mb-2">Sobre mí</h2>
+        <p class="mb-4">Soy un desarrollador web con experiencia en HTML, CSS, JavaScript y frameworks modernos como React y TailwindCSS. Me encanta transformar ideas en código limpio y mantenible, siempre enfocado en el rendimiento y la accesibilidad.</p>
+        <p>Cuando no estoy programando, me encontrarás explorando nuevas tecnologías, colaborando en proyectos de código abierto o compartiendo conocimiento en mi blog.</p>
+      </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="skills">
+      <h2 class="text-3xl font-bold mb-4 text-center">Habilidades</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md text-center">
+          <h3 class="font-semibold mb-2">HTML & CSS</h3>
+          <p>Maquetación semántica y diseño responsive.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md text-center">
+          <h3 class="font-semibold mb-2">JavaScript</h3>
+          <p>Vanilla JS, ES6+ y APIs modernas.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md text-center">
+          <h3 class="font-semibold mb-2">TailwindCSS</h3>
+          <p>UI utilities-first para prototipado rápido.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md text-center">
+          <h3 class="font-semibold mb-2">React</h3>
+          <p>Componentes reutilizables y estado reactivo.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md text-center">
+          <h3 class="font-semibold mb-2">Git & GitHub</h3>
+          <p>Control de versiones y despliegues.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md text-center">
+          <h3 class="font-semibold mb-2">Accesibilidad</h3>
+          <p>Buenas prácticas ARIA y contrastes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contact">
+      <h2 class="text-3xl font-bold mb-4 text-center">Contacto</h2>
+      <form class="max-w-xl mx-auto space-y-4">
+        <input type="text" placeholder="Tu nombre" required
+               class="w-full p-3 border border-gray-300 rounded-md bg-white dark:bg-gray-800" />
+        <input type="email" placeholder="Tu correo" required
+               class="w-full p-3 border border-gray-300 rounded-md bg-white dark:bg-gray-800" />
+        <textarea rows="4" placeholder="Tu mensaje" required
+                  class="w-full p-3 border border-gray-300 rounded-md bg-white dark:bg-gray-800"></textarea>
+        <button type="submit"
+                class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-full transition">
+          Enviar mensaje
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="py-6 bg-white dark:bg-gray-800 text-center text-sm">
+    © <span id="year"></span> Luis Miguel. Todos los derechos reservados.
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Toggle tema
+    const btn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const iconLight = document.getElementById('icon-light');
+    const iconDark = document.getElementById('icon-dark');
+
+    if (localStorage.theme === 'dark' ||
+        (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+      iconLight.classList.remove('hidden');
+      iconDark.classList.add('hidden');
+    } else {
+      html.classList.remove('dark');
+      iconDark.classList.remove('hidden');
+      iconLight.classList.add('hidden');
+    }
+
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      if (html.classList.contains('dark')) {
+        localStorage.theme = 'dark';
+        iconLight.classList.remove('hidden');
+        iconDark.classList.add('hidden');
+      } else {
+        localStorage.theme = 'light';
+        iconDark.classList.remove('hidden');
+        iconLight.classList.add('hidden');
+      }
+    });
+
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
