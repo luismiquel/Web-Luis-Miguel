@@ -4,68 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Sobre Mí — Luis Miguel</title>
-  <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class' }
-  </script>
+  <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
-  <!-- Botón de modo claro/oscuro -->
-  <button id="theme-toggle" class="fixed top-4 right-4 p-2 bg-gray-200 dark:bg-gray-800 rounded-full">
-    <span id="icon-dark">🌙</span>
-    <span id="icon-light" class="hidden">🌞</span>
-  </button>
-
-  <!-- Header con navegación -->
-  <header class="w-full bg-white dark:bg-gray-800 shadow py-4">
-    <nav class="max-w-3xl mx-auto flex justify-center space-x-4 text-lg">
-      <a href="index.html" class="text-amber-600 hover:underline">Inicio</a>
-      <span class="text-gray-400">|</span>
-      <span class="font-semibold">Sobre Mí</span>
-    </nav>
+  <header class="p-4 flex justify-center space-x-4">
+    <a href="index.html" class="font-semibold hover:underline">Inicio</a>
+    <a href="about.html" class="font-semibold hover:underline">Sobre Mí</a>
+    <a href="contact.html" class="font-semibold hover:underline">Contacto</a>
   </header>
 
-  <!-- Contenido principal -->
-  <main class="max-w-2xl mx-auto prose prose-lg dark:prose-invert py-12 px-4">
-    <h1>Sobre Mí</h1>
-    <p>¡Hola! Soy <strong>Luis Miguel</strong>, desarrollador web y entusiasta de la tecnología. ¡Bienvenido a mi sitio!</p>
+  <main class="max-w-2xl mx-auto py-12 px-4">
+    <h1 class="text-3xl font-bold text-amber-600 mb-4">Sobre Mí</h1>
+    <p class="text-lg mb-2">
+      ¡Hola! Soy Luis Miguel, desarrollador web y entusiasta de la tecnología. ¡Bienvenido a mi sitio!
+    </p>
   </main>
 
-  <script>
-    const btn = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    const iconDark = document.getElementById('icon-dark');
-    const iconLight = document.getElementById('icon-light');
-
-    // Inicia con la preferencia del usuario
-    if (
-      localStorage.theme === 'dark' ||
-      (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      html.classList.add('dark');
-      iconDark.classList.add('hidden');
-      iconLight.classList.remove('hidden');
-    } else {
-      html.classList.remove('dark');
-      iconLight.classList.add('hidden');
-      iconDark.classList.remove('hidden');
-    }
-
-    // Toggle tema
-    btn.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      if (html.classList.contains('dark')) {
-        localStorage.theme = 'dark';
-        iconDark.classList.add('hidden');
-        iconLight.classList.remove('hidden');
-      } else {
-        localStorage.theme = 'light';
-        iconLight.classList.add('hidden');
-        iconDark.classList.remove('hidden');
-      }
-    });
-  </script>
 </body>
 </html>
