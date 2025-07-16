@@ -3,86 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Mi Sitio — Luis Miguel</title>
-  <!-- Tailwind CSS via CDN -->
+  <title>Inicio — Luis Miguel</title>
+  <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { darkMode: 'class' }
   </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-  <!-- Botón de tema -->
-  <button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800">
-    <span id="icon-light" class="hidden">🌞</span>
+
+  <!-- Botón de modo claro/oscuro -->
+  <button id="theme-toggle" class="fixed top-4 right-4 p-2 bg-gray-200 dark:bg-gray-800 rounded-full">
     <span id="icon-dark">🌙</span>
+    <span id="icon-light" class="hidden">🌞</span>
   </button>
 
-  <!-- Cabecera / Nav -->
-  <header class="w-full py-4 bg-white dark:bg-gray-800 shadow-sm mb-8">
-    <nav class="max-w-4xl mx-auto flex justify-center space-x-6">
-      <a href="index.html" class="font-medium hover:underline">Inicio</a>
-      <a href="about.html" class="font-medium hover:underline">Sobre Mí</a>
+  <!-- Header con navegación -->
+  <header class="w-full bg-white dark:bg-gray-800 shadow py-4">
+    <nav class="max-w-3xl mx-auto flex justify-center space-x-4 text-lg">
+      <span class="font-semibold">Inicio</span>
+      <span class="text-gray-400">|</span>
+      <a href="about.html" class="text-amber-600 hover:underline">Sobre Mí</a>
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- Contenido principal -->
   <main class="min-h-screen flex flex-col items-center justify-center px-4">
-    <h1 class="text-5xl font-extrabold mb-4 text-center">
-      Luis Miguel<br/><span class="text-6xl">🌐</span>
-    </h1>
+    <h1 class="text-5xl font-extrabold mb-4 text-center">Luis Miguel</h1>
     <p class="text-xl mb-8 text-center max-w-xl">
-      Bienvenido a <span class="font-semibold">Mi Sitio</span><br/>
+      Bienvenido a <strong>Mi Sitio</strong><br/>
       Una página limpia, rápida y responsiva creada con IA y TailwindCSS.
     </p>
-    <a href="#features" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-full transition">
+    <a href="#features" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-full transition">
       Conocer más
     </a>
+
+    <section id="features" class="grid gap-8 sm:grid-cols-3 w-full max-w-4xl mt-12">
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
+        <h2 class="text-2xl font-bold mb-2">Responsive</h2>
+        <p>Se adapta a cualquier tamaño: móvil, tablet y escritorio.</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
+        <h2 class="text-2xl font-bold mb-2">Rápida</h2>
+        <p>Carga ultra-rápida usando CDN y código optimizado.</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
+        <h2 class="text-2xl font-bold mb-2">Fácil</h2>
+        <p>Cambia colores, texto e imágenes con solo editar este HTML.</p>
+      </div>
+    </section>
   </main>
 
-  <!-- Sección de características -->
-  <section id="features" class="max-w-4xl mx-auto grid gap-8 sm:grid-cols-3 py-16 px-4">
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-      <h2 class="text-2xl font-bold mb-2">Responsive</h2>
-      <p>Se adapta a cualquier tamaño: móvil, tablet y escritorio.</p>
-    </div>
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-      <h2 class="text-2xl font-bold mb-2">Rápida</h2>
-      <p>Carga ultra-rápida usando CDN y código optimizado.</p>
-    </div>
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
-      <h2 class="text-2xl font-bold mb-2">Fácil</h2>
-      <p>Cambia colores, texto e imágenes con solo editar este HTML.</p>
-    </div>
-  </section>
-
-  <!-- Script de cambio de tema -->
   <script>
     const btn = document.getElementById('theme-toggle');
     const html = document.documentElement;
-    const iconLight = document.getElementById('icon-light');
     const iconDark = document.getElementById('icon-dark');
+    const iconLight = document.getElementById('icon-light');
 
-    // Al cargar, aplica tema según preferencia o storage
+    // Arranca con la preferencia guardada o del sistema
     if (
       localStorage.theme === 'dark' ||
       (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       html.classList.add('dark');
+      iconDark.classList.add('hidden');
       iconLight.classList.remove('hidden');
     } else {
+      html.classList.remove('dark');
+      iconLight.classList.add('hidden');
       iconDark.classList.remove('hidden');
     }
 
+    // Cambia tema al click y lo guarda
     btn.addEventListener('click', () => {
       html.classList.toggle('dark');
       if (html.classList.contains('dark')) {
         localStorage.theme = 'dark';
-        iconLight.classList.remove('hidden');
         iconDark.classList.add('hidden');
+        iconLight.classList.remove('hidden');
       } else {
         localStorage.theme = 'light';
-        iconDark.classList.remove('hidden');
         iconLight.classList.add('hidden');
+        iconDark.classList.remove('hidden');
       }
     });
   </script>
