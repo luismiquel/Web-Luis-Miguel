@@ -3,107 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Mi Sitio — Luis Miguel</title>
-  <!-- Tailwind CSS via CDN -->
+  <title>Luis Miguel — Mi Sitio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: '#F59E0B',
-            secondary: '#1F2937'
-          }
-        }
-      }
-    }
-  </script>
+  <script> tailwind.config = { darkMode: 'class' } </script>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-
-  <!-- Toggle tema -->
-  <button id="theme-toggle"
-          class="fixed top-4 right-4 p-2 bg-gray-200 dark:bg-gray-800 rounded-full shadow-md focus:outline-none">
-    <span id="icon-light" class="hidden">🌞</span>
-    <span id="icon-dark">🌙</span>
-  </button>
-
-  <main class="min-h-screen flex flex-col items-center justify-center px-6 space-y-8">
-    <!-- Título -->
-    <h1 class="text-5xl sm:text-6xl font-extrabold text-center">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+  <main class="min-h-screen flex flex-col items-center justify-center px-4">
+    <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800">
+      <span id="icon-light" class="hidden">🌞</span>
+      <span id="icon-dark">🌙</span>
+    </button>
+    <h1 class="text-4xl font-extrabold mb-4 text-center">
       Luis Miguel<br/>
-      <span class="text-primary">🌐</span>
+      <span class="block text-6xl">🌐</span>
     </h1>
-
-    <!-- Descripción -->
-    <p class="text-lg sm:text-xl text-center max-w-2xl leading-relaxed">
+    <p class="text-xl mb-8 text-center max-w-xl">
       Bienvenido a <span class="font-semibold">Mi Sitio</span><br/>
       Una página limpia, rápida y responsiva creada con IA y TailwindCSS.
     </p>
-
-    <!-- Botón conocer más -->
     <a href="#features"
-       class="inline-block bg-primary hover:bg-yellow-600 text-white font-medium py-3 px-8 rounded-full shadow-lg transition-colors">
+       class="mb-12 inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-full transition">
       Conocer más
     </a>
-
-    <!-- Sección de características -->
-    <section id="features" class="w-full max-w-4xl grid gap-6 grid-cols-1 sm:grid-cols-3">
-      <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg text-center">
+    <section id="features" class="grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
         <h2 class="text-2xl font-bold mb-2">Responsive</h2>
-        <p>Se adapta a móvil, tablet y escritorio.</p>
+        <p>Se adapta a cualquier tamaño: móvil, tablet y escritorio.</p>
       </div>
-      <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg text-center">
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
         <h2 class="text-2xl font-bold mb-2">Rápida</h2>
-        <p>Carga ultra-rápida con CDN y código optimizado.</p>
+        <p>Carga ultra-rápida usando CDN y código optimizado.</p>
       </div>
-      <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg text-center">
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center">
         <h2 class="text-2xl font-bold mb-2">Fácil</h2>
-        <p>Cambia colores, texto e imágenes editando este HTML.</p>
+        <p>Cambia colores, texto e imágenes con solo editar este HTML.</p>
       </div>
     </section>
   </main>
-
-  <footer class="py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-    © <span id="year"></span> Luis Miguel. Todos los derechos reservados.
-  </footer>
-
   <script>
-    // Selección de elementos
     const btn = document.getElementById('theme-toggle');
     const html = document.documentElement;
     const iconLight = document.getElementById('icon-light');
-    const iconDark = document.getElementById('icon-dark');
-
-    // Estado inicial
+    const iconDark  = document.getElementById('icon-dark');
+    // Detectar tema inicial
     if (localStorage.theme === 'dark' ||
         (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       html.classList.add('dark');
       iconLight.classList.remove('hidden');
-      iconDark.classList.add('hidden');
+      iconDark .classList.add('hidden');
     } else {
-      html.classList.remove('dark');
-      iconDark.classList.remove('hidden');
-      iconLight.classList.add('hidden');
+      iconDark .classList.remove('hidden');
     }
-
-    // Toggle tema
+    // Cambiar tema al hacer clic
     btn.addEventListener('click', () => {
       html.classList.toggle('dark');
       if (html.classList.contains('dark')) {
         localStorage.theme = 'dark';
         iconLight.classList.remove('hidden');
-        iconDark.classList.add('hidden');
+        iconDark .classList.add('hidden');
       } else {
         localStorage.theme = 'light';
-        iconDark.classList.remove('hidden');
+        iconDark .classList.remove('hidden');
         iconLight.classList.add('hidden');
       }
     });
-
-    // Año dinámico en footer
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
