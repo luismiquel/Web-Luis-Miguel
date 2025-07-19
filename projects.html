@@ -5,67 +5,30 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Proyectos — Luis Miguel</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class' };</script>
+  <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
 
-  <!-- NAV -->
-  <header class="p-4 bg-white dark:bg-gray-800 shadow">
-    <nav class="container mx-auto flex gap-4">
-      <a href="index.html" class="hover:underline">Inicio</a> |
-      <a href="about.html" class="hover:underline">Sobre Mí</a> |
-      <a href="projects.html" class="font-bold hover:underline">Proyectos</a> |
-      <a href="contact.html" class="hover:underline">Contacto</a>
-      <button id="theme-toggle" class="ml-auto p-2 rounded bg-gray-200 dark:bg-gray-700">
-        <span id="icon-light" class="hidden">🌞</span>
-        <span id="icon-dark">🌙</span>
-      </button>
-    </nav>
+  <header class="p-4 flex gap-4 justify-center bg-white dark:bg-gray-800 shadow">
+    <a href="index.html" class="hover:underline">Inicio</a> |
+    <a href="about.html" class="hover:underline">Sobre Mí</a> |
+    <a href="projects.html" class="font-bold">Proyectos</a> |
+    <a href="contact.html" class="hover:underline">Contacto</a>
   </header>
 
-  <!-- CONTENIDO -->
-  <main class="container mx-auto py-16 px-4">
-    <h1 class="text-4xl font-extrabold mb-8 text-center">Mis Proyectos</h1>
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Proyecto 1 -->
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
-        <h2 class="text-2xl font-bold mb-2">Proyecto A</h2>
-        <p class="mb-4">Una breve descripción de lo que hace este proyecto.</p>
-        <a href="https://github.com/tuUsuario/proyecto-a" target="_blank"
-           class="text-amber-600 hover:underline">Ver en GitHub →</a>
-      </div>
-      <!-- Repite bloques según necesites... -->
-    </div>
+  <main class="max-w-4xl mx-auto p-8">
+    <h1 class="text-4xl font-bold mb-6">Mis Proyectos</h1>
+    <ul class="space-y-4">
+      <li class="p-4 bg-white dark:bg-gray-800 rounded shadow">
+        <h2 class="text-2xl font-semibold">Proyecto A</h2>
+        <p>Descripción breve de tu proyecto A.</p>
+      </li>
+      <li class="p-4 bg-white dark:bg-gray-800 rounded shadow">
+        <h2 class="text-2xl font-semibold">Proyecto B</h2>
+        <p>Descripción breve de tu proyecto B.</p>
+      </li>
+      <!-- Añade los tuyos aquí -->
+    </ul>
   </main>
-
-  <!-- SCRIPTS (tema) -->
-  <script>
-    const btn = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    const iconLight = document.getElementById('icon-light');
-    const iconDark  = document.getElementById('icon-dark');
-
-    // Inicializa tema
-    if (localStorage.theme === 'dark' ||
-        (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      html.classList.add('dark');
-      iconLight.classList.remove('hidden');
-    } else {
-      iconDark.classList.remove('hidden');
-    }
-
-    btn.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      if (html.classList.contains('dark')) {
-        localStorage.theme = 'dark';
-        iconLight.classList.remove('hidden');
-        iconDark.classList.add('hidden');
-      } else {
-        localStorage.theme = 'light';
-        iconDark.classList.remove('hidden');
-        iconLight.classList.add('hidden');
-      }
-    });
-  </script>
 </body>
 </html>
