@@ -8,26 +8,53 @@
   <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-  <header class="p-4 bg-white dark:bg-gray-800 shadow-md flex justify-center space-x-4">
+
+  <header class="p-4 flex justify-center space-x-4 bg-white dark:bg-gray-800 shadow">
     <a href="index.html" class="hover:underline">Inicio</a>
-    <a href="about.html" class="hover:underline">Sobre Mí</a>
+    <a href="about.html" class="font-semibold hover:underline">Sobre Mí</a>
     <a href="projects.html" class="hover:underline">Proyectos</a>
     <a href="contact.html" class="hover:underline">Contacto</a>
-    <button id="theme-toggle" class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+    <button id="theme-toggle" class="ml-6 p-2 rounded-full bg-gray-200 dark:bg-gray-700">
       <span id="icon-light" class="hidden">🌞</span>
       <span id="icon-dark">🌙</span>
     </button>
   </header>
 
-  <main class="px-6 py-12 max-w-3xl mx-auto">
+  <main class="min-h-screen flex flex-col items-center justify-center px-4">
     <h1 class="text-4xl font-bold mb-4">Sobre Mí</h1>
-    <p class="text-lg">
-      ¡Hola! Soy <strong>Luis Miguel</strong>, desarrollador web y entusiasta de la tecnología. 
-      Me apasiona crear interfaces limpias, accesibles y rápidas.
+    <p class="text-lg max-w-2xl">
+      ¡Hola! Soy Luis Miguel, desarrollador web y entusiasta de la tecnología. Me encanta
+      crear interfaces limpias y experiencias rápidas.
     </p>
   </main>
 
-  <!-- Reutiliza el mismo script de tema del index.html -->
-  <script>/* …idéntico al de index… */</script>
+  <script>
+    const btn = document.getElementById('theme-toggle'),
+          html = document.documentElement,
+          iconLight = document.getElementById('icon-light'),
+          iconDark  = document.getElementById('icon-dark');
+
+    if (localStorage.theme === 'dark' ||
+       (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+      iconLight.classList.remove('hidden');
+    } else {
+      html.classList.remove('dark');
+      iconDark.classList.remove('hidden');
+    }
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      if (html.classList.contains('dark')) {
+        localStorage.theme = 'dark';
+        iconLight.classList.remove('hidden');
+        iconDark.classList.add('hidden');
+      } else {
+        localStorage.theme = 'light';
+        iconDark.classList.remove('hidden');
+        iconLight.classList.add('hidden');
+      }
+    });
+  </script>
+
 </body>
 </html>
