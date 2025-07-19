@@ -1,36 +1,76 @@
-<!-- projects.html -->
 <!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Proyectos | Luis Miguel</title>
+  <title>Proyectos — Luis Miguel</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class' }</script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-  <header class="p-4 flex justify-between bg-white dark:bg-gray-800 shadow">
-    <nav class="space-x-4 text-lg">
-      <a href="index.html">Inicio</a> |
-      <a href="about.html">Sobre Mí</a> |
-      <a href="projects.html" class="font-bold">Proyectos</a> |
-      <a href="contact.html">Contacto</a>
-    </nav>
+
+  <!-- NAVBAR -->
+  <header class="flex items-center justify-center space-x-4 p-4 bg-white dark:bg-gray-800 shadow">
+    <a href="index.html" class="hover:underline">Inicio</a> |
+    <a href="about.html" class="hover:underline">Sobre Mí</a> |
+    <a href="projects.html" class="font-semibold hover:underline">Proyectos</a> |
+    <a href="contact.html" class="hover:underline">Contacto</a>
+
+    <button id="theme-toggle" class="ml-auto p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+      <span id="icon-light" class="hidden">🌞</span>
+      <span id="icon-dark">🌙</span>
+    </button>
   </header>
 
-  <main class="max-w-4xl mx-auto p-6 grid gap-6 sm:grid-cols-2">
-    <!-- Ejemplo de tarjeta de proyecto -->
-    <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow">
-      <h2 class="text-2xl font-semibold mb-2">Proyecto 1</h2>
-      <p>Descripción breve del proyecto.</p>
+  <!-- CONTENIDO -->
+  <main class="max-w-4xl mx-auto p-8 grid gap-6">
+    <h1 class="text-3xl font-bold mb-4">Proyectos</h1>
+
+    <!-- Ejemplo de un proyecto -->
+    <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+      <h2 class="text-2xl font-semibold">Proyecto A</h2>
+      <p>Descripción breve del proyecto A.</p>
       <a href="#" class="text-amber-600 hover:underline">Ver más →</a>
     </div>
-    <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow">
-      <h2 class="text-2xl font-semibold mb-2">Proyecto 2</h2>
-      <p>Descripción breve del proyecto.</p>
+
+    <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+      <h2 class="text-2xl font-semibold">Proyecto B</h2>
+      <p>Descripción breve del proyecto B.</p>
       <a href="#" class="text-amber-600 hover:underline">Ver más →</a>
     </div>
-    <!-- Añade tantas tarjetas como necesites -->
+
+    <!-- Añade más bloques de proyecto aquí -->
   </main>
+
+  <!-- IMPORTAR EL MISMO SCRIPT DE TOGGLE -->
+  <script>
+    const btn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const iconLight = document.getElementById('icon-light');
+    const iconDark = document.getElementById('icon-dark');
+
+    if (localStorage.theme === 'dark' ||
+        (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+      iconLight.classList.remove('hidden');
+    } else {
+      iconDark.classList.remove('hidden');
+    }
+
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      if (html.classList.contains('dark')) {
+        localStorage.theme = 'dark';
+        iconLight.classList.remove('hidden');
+        iconDark.classList.add('hidden');
+      } else {
+        localStorage.theme = 'light';
+        iconDark.classList.remove('hidden');
+        iconLight.classList.add('hidden');
+      }
+    });
+  </script>
 </body>
 </html>
