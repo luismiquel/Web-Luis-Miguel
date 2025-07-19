@@ -5,34 +5,77 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Contacto — Luis Miguel</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class' }</script>
+  <script> tailwind.config = { darkMode: 'class' } </script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
-  <header class="p-4 flex gap-4 justify-center bg-white dark:bg-gray-800 shadow">
-    <a href="index.html" class="hover:underline">Inicio</a> |
-    <a href="about.html" class="hover:underline">Sobre Mí</a> |
-    <a href="projects.html" class="hover:underline">Proyectos</a> |
-    <a href="contact.html" class="font-bold">Contacto</a>
+  <header class="w-full bg-white dark:bg-gray-800 shadow-md">
+    <div class="max-w-4xl mx-auto flex items-center justify-between p-4">
+      <nav class="space-x-4 text-lg font-medium">
+        <a href="index.html" class="hover:underline">Inicio</a>
+        <span>|</span>
+        <a href="about.html" class="hover:underline">Sobre Mí</a>
+        <span>|</span>
+        <a href="projects.html" class="hover:underline">Proyectos</a>
+        <span>|</span>
+        <a href="contact.html" class="underline font-bold">Contacto</a>
+      </nav>
+      <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+        <span id="icon-light" class="hidden">🌞</span>
+        <span id="icon-dark">🌙</span>
+      </button>
+    </div>
   </header>
 
-  <main class="max-w-md mx-auto p-8">
-    <h1 class="text-4xl font-bold mb-6">Contacto</h1>
+  <main class="max-w-4xl mx-auto p-8">
+    <h1 class="text-4xl font-bold mb-4">Contacto</h1>
     <form action="https://formspree.io/f/xeozqnlo" method="POST" class="space-y-4">
       <div>
         <label class="block mb-1">Nombre:</label>
-        <input type="text" name="name" required class="w-full px-3 py-2 border rounded" />
+        <input type="text" name="name" required class="w-full p-2 border rounded-md bg-white dark:bg-gray-800">
       </div>
       <div>
         <label class="block mb-1">Email:</label>
-        <input type="email" name="email" required class="w-full px-3 py-2 border rounded" />
+        <input type="email" name="_replyto" required class="w-full p-2 border rounded-md bg-white dark:bg-gray-800">
       </div>
       <div>
         <label class="block mb-1">Mensaje:</label>
-        <textarea name="message" rows="4" required class="w-full px-3 py-2 border rounded"></textarea>
+        <textarea name="message" rows="5" required class="w-full p-2 border rounded-md bg-white dark:bg-gray-800"></textarea>
       </div>
-      <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded">Enviar</button>
+      <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded-full">
+        Enviar
+      </button>
     </form>
   </main>
+
+  <script>
+    const btn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const iconLight = document.getElementById('icon-light');
+    const iconDark = document.getElementById('icon-dark');
+
+    if (
+      localStorage.theme === 'dark' ||
+      (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      html.classList.add('dark');
+      iconLight.classList.remove('hidden');
+    } else {
+      iconDark.classList.remove('hidden');
+    }
+
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      if (html.classList.contains('dark')) {
+        localStorage.theme = 'dark';
+        iconLight.classList.remove('hidden');
+        iconDark.classList.add('hidden');
+      } else {
+        localStorage.theme = 'light';
+        iconDark.classList.remove('hidden');
+        iconLight.classList.add('hidden');
+      }
+    });
+  </script>
 </body>
 </html>
