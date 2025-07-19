@@ -1,63 +1,89 @@
 <!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Proyectos — Luis Miguel</title>
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class' }</script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
-  <header class="p-4 flex justify-center space-x-4 bg-white dark:bg-gray-800 shadow">
+  <!-- NAVBAR -->
+  <header class="p-4 flex gap-4 bg-white dark:bg-gray-800 shadow-md">
     <a href="index.html" class="hover:underline">Inicio</a>
     <a href="about.html" class="hover:underline">Sobre Mí</a>
-    <a href="projects.html" class="font-semibold hover:underline">Proyectos</a>
+    <a href="projects.html" class="hover:underline font-semibold">Proyectos</a>
     <a href="contact.html" class="hover:underline">Contacto</a>
-    <button id="theme-toggle" class="ml-6 p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+    <button id="theme-toggle" class="ml-auto p-2 rounded-full bg-gray-200 dark:bg-gray-700">
       <span id="icon-light" class="hidden">🌞</span>
       <span id="icon-dark">🌙</span>
     </button>
   </header>
 
-  <main class="min-h-screen px-4 py-12">
-    <h1 class="text-4xl font-bold text-center mb-8">Mis Proyectos</h1>
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+  <!-- TÍTULO -->
+  <main class="max-w-4xl mx-auto py-12 px-4">
+    <h1 class="text-4xl font-extrabold mb-8 text-center">Mis Proyectos</h1>
+
+    <!-- GRID DE PROYECTOS -->
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       <!-- Proyecto 1 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
-        <h2 class="text-2xl font-semibold mb-2">Proyecto Uno</h2>
-        <p class="mb-4">Descripción breve de tu primer proyecto, la tech stack, enlace, etc.</p>
-        <a href="#" class="text-amber-600 hover:underline">Ver más →</a>
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-2">📱 App Móvil</h2>
+        <p class="mb-4">Una app de fitness creada con React Native y Firebase.</p>
+        <a href="https://github.com/tu-usuario/app-de-fitness" 
+           target="_blank"
+           class="inline-block bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-full">
+          Ver código
+        </a>
       </div>
+
       <!-- Proyecto 2 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
-        <h2 class="text-2xl font-semibold mb-2">Proyecto Dos</h2>
-        <p class="mb-4">Descripción breve de tu segundo proyecto, qué herramientas usaste.</p>
-        <a href="#" class="text-amber-600 hover:underline">Ver más →</a>
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-2">💻 Web de Recetas</h2>
+        <p class="mb-4">Frontend con Tailwind y Firebase para gestionar recetas.</p>
+        <a href="https://github.com/tu-usuario/recetas-espanolas" 
+           target="_blank"
+           class="inline-block bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-full">
+          Ver código
+        </a>
       </div>
+
       <!-- Proyecto 3 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
-        <h2 class="text-2xl font-semibold mb-2">Proyecto Tres</h2>
-        <p class="mb-4">Pequeña descripción y enlace a repositorio o demo.</p>
-        <a href="#" class="text-amber-600 hover:underline">Ver más →</a>
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-2">🌐 Portfolio Web</h2>
+        <p class="mb-4">Este mismo sitio estático que ves ahora ¡100% IA + Tailwind!</p>
+        <a href="https://github.com/luismiquel/Web-Luis-Miguel" 
+           target="_blank"
+           class="inline-block bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-full">
+          Ver código
+        </a>
       </div>
     </div>
   </main>
 
+  <!-- SCRIPT TEMA -->
   <script>
-    const btn = document.getElementById('theme-toggle'),
-          html = document.documentElement,
-          iconLight = document.getElementById('icon-light'),
-          iconDark  = document.getElementById('icon-dark');
+    const btn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const iconLight = document.getElementById('icon-light');
+    const iconDark = document.getElementById('icon-dark');
 
+    // Inicia según preferencia
     if (localStorage.theme === 'dark' ||
-       (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       html.classList.add('dark');
       iconLight.classList.remove('hidden');
+      iconDark.classList.add('hidden');
     } else {
       html.classList.remove('dark');
       iconDark.classList.remove('hidden');
+      iconLight.classList.add('hidden');
     }
+
     btn.addEventListener('click', () => {
       html.classList.toggle('dark');
       if (html.classList.contains('dark')) {
