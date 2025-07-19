@@ -8,36 +8,71 @@
   <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-  <header class="p-4 bg-white dark:bg-gray-800 shadow-md flex justify-center space-x-4">
+
+  <header class="p-4 flex justify-center space-x-4 bg-white dark:bg-gray-800 shadow">
     <a href="index.html" class="hover:underline">Inicio</a>
     <a href="about.html" class="hover:underline">Sobre Mí</a>
     <a href="projects.html" class="hover:underline">Proyectos</a>
-    <a href="contact.html" class="hover:underline">Contacto</a>
-    <button id="theme-toggle" class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+    <a href="contact.html" class="font-semibold hover:underline">Contacto</a>
+    <button id="theme-toggle" class="ml-6 p-2 rounded-full bg-gray-200 dark:bg-gray-700">
       <span id="icon-light" class="hidden">🌞</span>
       <span id="icon-dark">🌙</span>
     </button>
   </header>
 
-  <main class="px-6 py-12 max-w-md mx-auto">
-    <h1 class="text-4xl font-bold mb-6">Contacto</h1>
-    <form action="https://formspree.io/f/xeozqnlo" method="POST" class="space-y-4">
+  <main class="min-h-screen flex items-center justify-center px-4">
+    <form action="https://formspree.io/f/xeozqnlo" method="POST"
+          class="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow p-8 space-y-4">
+      <h1 class="text-2xl font-bold text-center mb-4">Contacto</h1>
       <label class="block">
         <span>Nombre</span>
-        <input type="text" name="name" required class="w-full p-2 border rounded">
+        <input type="text" name="name" required
+               class="mt-1 block w-full rounded border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-2 focus:outline-none">
       </label>
       <label class="block">
         <span>Email</span>
-        <input type="email" name="email" required class="w-full p-2 border rounded">
+        <input type="email" name="email" required
+               class="mt-1 block w-full rounded border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-2 focus:outline-none">
       </label>
       <label class="block">
         <span>Mensaje</span>
-        <textarea name="message" rows="4" required class="w-full p-2 border rounded"></textarea>
+        <textarea name="message" rows="4" required
+                  class="mt-1 block w-full rounded border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-2 focus:outline-none"></textarea>
       </label>
-      <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 rounded">Enviar</button>
+      <button type="submit"
+              class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 rounded">
+        Enviar
+      </button>
     </form>
   </main>
 
-  <script>/* …idéntico al de index… */</script>
+  <script>
+    const btn = document.getElementById('theme-toggle'),
+          html = document.documentElement,
+          iconLight = document.getElementById('icon-light'),
+          iconDark  = document.getElementById('icon-dark');
+
+    if (localStorage.theme === 'dark' ||
+       (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+      iconLight.classList.remove('hidden');
+    } else {
+      html.classList.remove('dark');
+      iconDark.classList.remove('hidden');
+    }
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      if (html.classList.contains('dark')) {
+        localStorage.theme = 'dark';
+        iconLight.classList.remove('hidden');
+        iconDark.classList.add('hidden');
+      } else {
+        localStorage.theme = 'light';
+        iconDark.classList.remove('hidden');
+        iconLight.classList.add('hidden');
+      }
+    });
+  </script>
+
 </body>
 </html>
