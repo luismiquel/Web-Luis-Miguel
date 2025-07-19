@@ -5,35 +5,35 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Proyectos — Luis Miguel</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script> tailwind.config = { darkMode: 'class' } </script>
+  <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
-  <header class="w-full bg-white dark:bg-gray-800 shadow-md">
-    <div class="max-w-4xl mx-auto flex items-center justify-between p-4">
-      <nav class="space-x-4 text-lg font-medium">
-        <a href="index.html" class="hover:underline">Inicio</a>
-        <span>|</span>
-        <a href="about.html" class="hover:underline">Sobre Mí</a>
-        <span>|</span>
-        <a href="projects.html" class="underline font-bold">Proyectos</a>
-        <span>|</span>
-        <a href="contact.html" class="hover:underline">Contacto</a>
-      </nav>
-      <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
-        <span id="icon-light" class="hidden">🌞</span>
-        <span id="icon-dark">🌙</span>
-      </button>
-    </div>
+  <!-- Navbar -->
+  <header class="p-4 bg-white dark:bg-gray-800 shadow-md flex justify-between items-center">
+    <nav class="space-x-4">
+      <a href="index.html" class="hover:underline">Inicio</a>
+      <a href="about.html" class="hover:underline">Sobre Mí</a>
+      <a href="projects.html" class="font-semibold">Proyectos</a>
+      <a href="contact.html" class="hover:underline">Contacto</a>
+    </nav>
+    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+      <span id="icon-light" class="hidden">🌞</span>
+      <span id="icon-dark">🌙</span>
+    </button>
   </header>
 
-  <main class="max-w-4xl mx-auto p-8">
-    <h1 class="text-4xl font-bold mb-4">Proyectos</h1>
-    <ul class="space-y-4 list-disc list-inside">
-      <li><a href="#" class="text-amber-600 hover:underline">Proyecto A</a>: Descripción breve.</li>
-      <li><a href="#" class="text-amber-600 hover:underline">Proyecto B</a>: Descripción breve.</li>
-      <li><a href="#" class="text-amber-600 hover:underline">Proyecto C</a>: Descripción breve.</li>
-    </ul>
+  <main class="min-h-screen px-4 py-8">
+    <h1 class="text-4xl font-bold text-center mb-8">Mis Proyectos</h1>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+      <!-- Ejemplo de tarjeta -->
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+        <h2 class="text-2xl font-semibold mb-2">Proyecto 1</h2>
+        <p>Descripción breve de tu primer proyecto.</p>
+        <a href="#" class="mt-4 inline-block text-amber-600 hover:underline">Ver más</a>
+      </div>
+      <!-- Repite para más proyectos -->
+    </div>
   </main>
 
   <script>
@@ -42,10 +42,7 @@
     const iconLight = document.getElementById('icon-light');
     const iconDark = document.getElementById('icon-dark');
 
-    if (
-      localStorage.theme === 'dark' ||
-      (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
+    if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       html.classList.add('dark');
       iconLight.classList.remove('hidden');
     } else {
