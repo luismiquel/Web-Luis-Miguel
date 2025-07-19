@@ -3,52 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Proyectos — Luis Miguel</title>
+  <title>Proyectos – Luis Miguel</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script> tailwind.config = { darkMode: 'class' } </script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-  <header class="w-full p-4 bg-white dark:bg-gray-800 shadow flex justify-center space-x-6">
-    <a href="index.html"     class="hover:underline">Inicio</a>
-    <a href="about.html"     class="hover:underline">Sobre Mí</a>
-    <a href="projects.html"  class="font-bold underline">Proyectos</a>
-    <a href="contact.html"   class="hover:underline">Contacto</a>
+
+  <!-- Navbar -->
+  <header class="p-4 bg-white dark:bg-gray-800 shadow-md flex justify-center space-x-4">
+    <a href="index.html" class="hover:underline">Inicio</a>
+    <a href="about.html" class="hover:underline">Sobre Mí</a>
+    <a href="projects.html" class="font-semibold underline">Proyectos</a>
+    <a href="contact.html" class="hover:underline">Contacto</a>
     <button id="theme-toggle" class="ml-auto p-2 rounded-full bg-gray-200 dark:bg-gray-700">
       <span id="icon-light" class="hidden">🌞</span>
       <span id="icon-dark">🌙</span>
     </button>
   </header>
 
-  <main class="max-w-4xl mx-auto py-16 px-4 space-y-8">
-    <h1 class="text-4xl font-extrabold">Proyectos</h1>
-    <!-- Ejemplo de tarjeta de proyecto -->
-    <div class="grid gap-6 sm:grid-cols-2">
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow">
-        <h2 class="text-2xl font-bold mb-2">Mi Recetario</h2>
-        <p>Una app web para buscar y guardar recetas de cocina.</p>
-        <a href="https://github.com/luismiquel/mi-recetario" target="_blank"
-           class="mt-4 inline-block text-amber-600 hover:underline">Ver en GitHub</a>
+  <!-- Hero -->
+  <main class="max-w-5xl mx-auto py-12 px-4">
+    <h1 class="text-4xl font-extrabold mb-8 text-center">Mis Proyectos</h1>
+
+    <!-- Grid de tarjetas -->
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Proyecto 1 -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden flex flex-col">
+        <img src="https://via.placeholder.com/400x200" alt="Proyecto A" class="w-full h-40 object-cover">
+        <div class="p-6 flex-1 flex flex-col">
+          <h2 class="text-2xl font-bold mb-2">Proyecto A</h2>
+          <p class="flex-1">Una breve descripción de tu primer proyecto, tecnologías usadas, desafíos resueltos, etc.</p>
+          <a href="#" class="mt-4 inline-block text-amber-600 hover:underline font-semibold">Ver más →</a>
+        </div>
       </div>
-      <!-- Añade más proyectos aquí -->
+
+      <!-- Proyecto 2 -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden flex flex-col">
+        <img src="https://via.placeholder.com/400x200" alt="Proyecto B" class="w-full h-40 object-cover">
+        <div class="p-6 flex-1 flex flex-col">
+          <h2 class="text-2xl font-bold mb-2">Proyecto B</h2>
+          <p class="flex-1">Descripción de tu segundo proyecto, qué aprendiste y qué aporta.</p>
+          <a href="#" class="mt-4 inline-block text-amber-600 hover:underline font-semibold">Ver más →</a>
+        </div>
+      </div>
+
+      <!-- Proyecto 3 -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden flex flex-col">
+        <img src="https://via.placeholder.com/400x200" alt="Proyecto C" class="w-full h-40 object-cover">
+        <div class="p-6 flex-1 flex flex-col">
+          <h2 class="text-2xl font-bold mb-2">Proyecto C</h2>
+          <p class="flex-1">Tercera miniatura de tu portafolio: temas, resultados y enlace.</p>
+          <a href="#" class="mt-4 inline-block text-amber-600 hover:underline font-semibold">Ver más →</a>
+        </div>
+      </div>
     </div>
   </main>
 
   <script>
-    /* mismo script */
+    // Theme toggle
     const btn = document.getElementById('theme-toggle');
     const html = document.documentElement;
     const iconLight = document.getElementById('icon-light');
     const iconDark = document.getElementById('icon-dark');
+
+    // Inicializa tema
     if (localStorage.theme === 'dark' ||
         (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       html.classList.add('dark');
       iconLight.classList.remove('hidden');
-      iconDark.classList.add('hidden');
     } else {
-      html.classList.remove('dark');
       iconDark.classList.remove('hidden');
-      iconLight.classList.add('hidden');
     }
+
     btn.addEventListener('click', () => {
       html.classList.toggle('dark');
       if (html.classList.contains('dark')) {
