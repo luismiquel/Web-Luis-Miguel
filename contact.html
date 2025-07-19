@@ -2,81 +2,60 @@
 <html lang="es" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Contacto — Luis Miguel</title>
-  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class' }
-  </script>
+  <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-
-  <!-- Navbar -->
-  <header class="p-4 flex justify-center space-x-4 bg-white dark:bg-gray-800 shadow-md">
-    <a href="index.html" class="font-semibold hover:underline">Inicio</a>
-    <a href="about.html" class="font-semibold hover:underline">Sobre Mí</a>
-    <a href="projects.html" class="font-semibold hover:underline">Proyectos</a>
-    <a href="contact.html" class="font-semibold hover:underline">Contacto</a>
-    <button id="theme-toggle" class="ml-auto p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+  <header class="p-4 flex gap-4">
+    <a href="index.html" class="hover:underline">Inicio</a> |
+    <a href="about.html" class="hover:underline">Sobre Mí</a> |
+    <a href="projects.html" class="hover:underline">Proyectos</a> |
+    <a href="contact.html" class="hover:underline font-bold">Contacto</a>
+    <button id="theme-toggle" class="ml-auto p-2 rounded-full bg-gray-200 dark:bg-gray-800">
       <span id="icon-light" class="hidden">🌞</span>
       <span id="icon-dark">🌙</span>
     </button>
   </header>
 
-  <!-- Main Content -->
-  <main class="max-w-xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-4 text-center">Contacto</h1>
-    <p class="mb-6 text-center">Escríbeme y te responderé lo antes posible.</p>
-
+  <main class="max-w-lg mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-4">Contacto</h1>
     <form action="https://formspree.io/f/xeozqnlo" method="POST" class="space-y-4">
       <label class="block">
-        <span class="block mb-1">Nombre</span>
+        <span>Nombre</span>
         <input type="text" name="name" required
-               class="w-full p-2 border rounded bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-500" />
+          class="mt-1 block w-full p-2 border rounded" />
       </label>
-
       <label class="block">
-        <span class="block mb-1">Email</span>
+        <span>Email</span>
         <input type="email" name="email" required
-               class="w-full p-2 border rounded bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-500" />
+          class="mt-1 block w-full p-2 border rounded" />
       </label>
-
       <label class="block">
-        <span class="block mb-1">Mensaje</span>
+        <span>Mensaje</span>
         <textarea name="message" rows="5" required
-                  class="w-full p-2 border rounded bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+          class="mt-1 block w-full p-2 border rounded"></textarea>
       </label>
-
       <button type="submit"
-              class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 rounded transition">
+        class="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded">
         Enviar
       </button>
     </form>
   </main>
 
-  <!-- Theme Toggle Script -->
   <script>
-    const html = document.documentElement;
-    const btn  = document.getElementById('theme-toggle');
-    const iconLight = document.getElementById('icon-light');
-    const iconDark  = document.getElementById('icon-dark');
-
-    // Inicializa tema según preferencia o localStorage
-    if (
-      localStorage.theme === 'dark' ||
-      (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
+    // toggle dark/light
+    const btn = document.getElementById('theme-toggle'),
+          html = document.documentElement,
+          iconLight = document.getElementById('icon-light'),
+          iconDark = document.getElementById('icon-dark');
+    if (localStorage.theme==='dark' || (!localStorage.theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
       html.classList.add('dark');
       iconLight.classList.remove('hidden');
-      iconDark.classList.add('hidden');
     } else {
-      html.classList.remove('dark');
       iconDark.classList.remove('hidden');
-      iconLight.classList.add('hidden');
     }
-
-    // Al hacer clic, toggle y guarda
     btn.addEventListener('click', () => {
       html.classList.toggle('dark');
       if (html.classList.contains('dark')) {
@@ -90,6 +69,5 @@
       }
     });
   </script>
-
 </body>
 </html>
