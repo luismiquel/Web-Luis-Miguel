@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Proyectos – Luis Miguel</title>
+  <title>Proyectos — Luis Miguel</title>
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { darkMode: 'class' }
@@ -12,53 +13,62 @@
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
   <!-- Navbar -->
-  <header class="p-4 bg-white dark:bg-gray-800 shadow-md flex justify-center space-x-4">
-    <a href="index.html" class="hover:underline">Inicio</a>
-    <a href="about.html" class="hover:underline">Sobre Mí</a>
-    <a href="projects.html" class="font-semibold underline">Proyectos</a>
-    <a href="contact.html" class="hover:underline">Contacto</a>
-    <button id="theme-toggle" class="ml-auto p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+  <header class="p-4 flex justify-between items-center max-w-4xl mx-auto">
+    <nav class="space-x-4">
+      <a href="index.html" class="hover:underline">Inicio</a>
+      <a href="about.html" class="hover:underline">Sobre Mí</a>
+      <a href="projects.html" class="font-semibold underline">Proyectos</a>
+      <a href="contact.html" class="hover:underline">Contacto</a>
+    </nav>
+    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-800">
       <span id="icon-light" class="hidden">🌞</span>
       <span id="icon-dark">🌙</span>
     </button>
   </header>
 
-  <!-- Hero -->
-  <main class="max-w-5xl mx-auto py-12 px-4">
+  <main class="max-w-4xl mx-auto p-4">
     <h1 class="text-4xl font-extrabold mb-8 text-center">Mis Proyectos</h1>
 
-    <!-- Grid de tarjetas -->
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <!-- Proyecto 1 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden flex flex-col">
-        <img src="https://via.placeholder.com/400x200" alt="Proyecto A" class="w-full h-40 object-cover">
-        <div class="p-6 flex-1 flex flex-col">
-          <h2 class="text-2xl font-bold mb-2">Proyecto A</h2>
-          <p class="flex-1">Una breve descripción de tu primer proyecto, tecnologías usadas, desafíos resueltos, etc.</p>
-          <a href="#" class="mt-4 inline-block text-amber-600 hover:underline font-semibold">Ver más →</a>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+        <img src="https://via.placeholder.com/400x200" alt="Proyecto 1" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h2 class="text-2xl font-bold mb-2">Proyecto Uno</h2>
+          <p class="text-sm mb-4">Descripción breve de lo que hace este proyecto y las tecnologías usadas.</p>
+          <a href="https://github.com/luismiquel/proyecto-uno" target="_blank"
+             class="inline-block bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-full text-sm transition">
+            Ver en GitHub
+          </a>
         </div>
       </div>
-
       <!-- Proyecto 2 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden flex flex-col">
-        <img src="https://via.placeholder.com/400x200" alt="Proyecto B" class="w-full h-40 object-cover">
-        <div class="p-6 flex-1 flex flex-col">
-          <h2 class="text-2xl font-bold mb-2">Proyecto B</h2>
-          <p class="flex-1">Descripción de tu segundo proyecto, qué aprendiste y qué aporta.</p>
-          <a href="#" class="mt-4 inline-block text-amber-600 hover:underline font-semibold">Ver más →</a>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+        <img src="https://via.placeholder.com/400x200" alt="Proyecto 2" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h2 class="text-2xl font-bold mb-2">Proyecto Dos</h2>
+          <p class="text-sm mb-4">Breve descripción y tecnologías principales.</p>
+          <a href="https://github.com/luismiquel/proyecto-dos" target="_blank"
+             class="inline-block bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-full text-sm transition">
+            Ver en GitHub
+          </a>
+        </div>
+      </div>
+      <!-- Proyecto 3 -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+        <img src="https://via.placeholder.com/400x200" alt="Proyecto 3" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h2 class="text-2xl font-bold mb-2">Proyecto Tres</h2>
+          <p class="text-sm mb-4">Otra descripción resumida de este proyecto.</p>
+          <a href="https://github.com/luismiquel/proyecto-tres" target="_blank"
+             class="inline-block bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-full text-sm transition">
+            Ver en GitHub
+          </a>
         </div>
       </div>
 
-      <!-- Proyecto 3 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden flex flex-col">
-        <img src="https://via.placeholder.com/400x200" alt="Proyecto C" class="w-full h-40 object-cover">
-        <div class="p-6 flex-1 flex flex-col">
-          <h2 class="text-2xl font-bold mb-2">Proyecto C</h2>
-          <p class="flex-1">Tercera miniatura de tu portafolio: temas, resultados y enlace.</p>
-          <a href="#" class="mt-4 inline-block text-amber-600 hover:underline font-semibold">Ver más →</a>
-        </div>
-      </div>
-    </div>
+      <!-- Añade más tarjetas aquí -->
+    </section>
   </main>
 
   <script>
@@ -68,13 +78,16 @@
     const iconLight = document.getElementById('icon-light');
     const iconDark = document.getElementById('icon-dark');
 
-    // Inicializa tema
+    // Al cargar, aplica preferencia o localStorage
     if (localStorage.theme === 'dark' ||
         (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       html.classList.add('dark');
       iconLight.classList.remove('hidden');
+      iconDark.classList.add('hidden');
     } else {
+      html.classList.remove('dark');
       iconDark.classList.remove('hidden');
+      iconLight.classList.add('hidden');
     }
 
     btn.addEventListener('click', () => {
