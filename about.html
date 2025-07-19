@@ -5,46 +5,42 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Sobre Mí — Luis Miguel</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class' }
-  </script>
+  <script> tailwind.config = { darkMode: 'class' } </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-
-  <!-- NAVBAR -->
-  <header class="flex items-center justify-center space-x-4 p-4 bg-white dark:bg-gray-800 shadow">
-    <a href="index.html" class="hover:underline">Inicio</a> |
-    <a href="about.html" class="font-semibold hover:underline">Sobre Mí</a> |
-    <a href="projects.html" class="hover:underline">Proyectos</a> |
-    <a href="contact.html" class="hover:underline">Contacto</a>
-
+  <header class="w-full p-4 bg-white dark:bg-gray-800 shadow flex justify-center space-x-6">
+    <a href="index.html"     class="hover:underline">Inicio</a>
+    <a href="about.html"     class="font-bold underline">Sobre Mí</a>
+    <a href="projects.html"  class="hover:underline">Proyectos</a>
+    <a href="contact.html"   class="hover:underline">Contacto</a>
     <button id="theme-toggle" class="ml-auto p-2 rounded-full bg-gray-200 dark:bg-gray-700">
       <span id="icon-light" class="hidden">🌞</span>
       <span id="icon-dark">🌙</span>
     </button>
   </header>
 
-  <!-- CONTENIDO -->
-  <main class="max-w-3xl mx-auto p-8">
-    <h1 class="text-3xl font-bold mb-4">Sobre Mí</h1>
-    <p>¡Hola! Soy Luis Miguel, desarrollador web y entusiasta de la tecnología. ¡Bienvenido a mi sitio!</p>
+  <main class="max-w-2xl mx-auto py-16 px-4">
+    <h1 class="text-4xl font-extrabold mb-4">Sobre Mí</h1>
+    <p class="text-lg">¡Hola! Soy Luis Miguel, desarrollador web y entusiasta de la tecnología.  
+      Me apasiona crear experiencias digitales limpias y eficientes.</p>
   </main>
 
-  <!-- IMPORTAR EL MISMO SCRIPT DE TOGGLE -->
   <script>
+    /* mismo script del index.html */
     const btn = document.getElementById('theme-toggle');
     const html = document.documentElement;
     const iconLight = document.getElementById('icon-light');
     const iconDark = document.getElementById('icon-dark');
-
     if (localStorage.theme === 'dark' ||
         (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       html.classList.add('dark');
       iconLight.classList.remove('hidden');
+      iconDark.classList.add('hidden');
     } else {
+      html.classList.remove('dark');
       iconDark.classList.remove('hidden');
+      iconLight.classList.add('hidden');
     }
-
     btn.addEventListener('click', () => {
       html.classList.toggle('dark');
       if (html.classList.contains('dark')) {
