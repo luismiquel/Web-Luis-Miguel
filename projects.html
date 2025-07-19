@@ -8,41 +8,69 @@
   <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-  <header class="p-4 bg-white dark:bg-gray-800 shadow-md flex justify-center space-x-4">
+
+  <header class="p-4 flex justify-center space-x-4 bg-white dark:bg-gray-800 shadow">
     <a href="index.html" class="hover:underline">Inicio</a>
     <a href="about.html" class="hover:underline">Sobre Mí</a>
-    <a href="projects.html" class="hover:underline">Proyectos</a>
+    <a href="projects.html" class="font-semibold hover:underline">Proyectos</a>
     <a href="contact.html" class="hover:underline">Contacto</a>
-    <button id="theme-toggle" class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+    <button id="theme-toggle" class="ml-6 p-2 rounded-full bg-gray-200 dark:bg-gray-700">
       <span id="icon-light" class="hidden">🌞</span>
       <span id="icon-dark">🌙</span>
     </button>
   </header>
 
-  <main class="px-6 py-12 max-w-4xl mx-auto">
-    <h1 class="text-4xl font-bold mb-8">Mis Proyectos</h1>
-    <div class="space-y-8">
-      <!-- Proyecto A -->
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
-        <h2 class="text-2xl font-semibold mb-2">Proyecto A</h2>
-        <p>Descripción breve de este proyecto, qué hace y qué tecnologías usa.</p>
-        <a href="https://github.com/tuusuario/proyecto-a" target="_blank" class="mt-4 inline-block text-amber-600 hover:underline">Ver en GitHub →</a>
+  <main class="min-h-screen px-4 py-12">
+    <h1 class="text-4xl font-bold text-center mb-8">Mis Proyectos</h1>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+      <!-- Proyecto 1 -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+        <h2 class="text-2xl font-semibold mb-2">Proyecto Uno</h2>
+        <p class="mb-4">Descripción breve de tu primer proyecto, la tech stack, enlace, etc.</p>
+        <a href="#" class="text-amber-600 hover:underline">Ver más →</a>
       </div>
-      <!-- Proyecto B -->
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
-        <h2 class="text-2xl font-semibold mb-2">Proyecto B</h2>
-        <p>Otro proyecto que utiliza X, Y y Z. Ideal para …</p>
-        <a href="https://github.com/tuusuario/proyecto-b" target="_blank" class="mt-4 inline-block text-amber-600 hover:underline">Ver en GitHub →</a>
+      <!-- Proyecto 2 -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+        <h2 class="text-2xl font-semibold mb-2">Proyecto Dos</h2>
+        <p class="mb-4">Descripción breve de tu segundo proyecto, qué herramientas usaste.</p>
+        <a href="#" class="text-amber-600 hover:underline">Ver más →</a>
       </div>
-      <!-- Proyecto C -->
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
-        <h2 class="text-2xl font-semibold mb-2">Proyecto C</h2>
-        <p>Una breve explicación de este proyecto, su propósito y stack tecnológico.</p>
-        <a href="https://github.com/tuusuario/proyecto-c" target="_blank" class="mt-4 inline-block text-amber-600 hover:underline">Ver en GitHub →</a>
+      <!-- Proyecto 3 -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+        <h2 class="text-2xl font-semibold mb-2">Proyecto Tres</h2>
+        <p class="mb-4">Pequeña descripción y enlace a repositorio o demo.</p>
+        <a href="#" class="text-amber-600 hover:underline">Ver más →</a>
       </div>
     </div>
   </main>
 
-  <script>/* …idéntico al de index… */</script>
+  <script>
+    const btn = document.getElementById('theme-toggle'),
+          html = document.documentElement,
+          iconLight = document.getElementById('icon-light'),
+          iconDark  = document.getElementById('icon-dark');
+
+    if (localStorage.theme === 'dark' ||
+       (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+      iconLight.classList.remove('hidden');
+    } else {
+      html.classList.remove('dark');
+      iconDark.classList.remove('hidden');
+    }
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      if (html.classList.contains('dark')) {
+        localStorage.theme = 'dark';
+        iconLight.classList.remove('hidden');
+        iconDark.classList.add('hidden');
+      } else {
+        localStorage.theme = 'light';
+        iconDark.classList.remove('hidden');
+        iconLight.classList.add('hidden');
+      }
+    });
+  </script>
+
 </body>
 </html>
